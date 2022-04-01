@@ -1,43 +1,38 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from './pages/HomePage'
+import ListPage from './pages/ListPage'
+import LoginPage from './pages/LoginPage'
+import NewPage from "./pages/NewPage";
+import SinglePage from "./pages/SinglePage";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount(prevState => prevState + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<HomePage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="users">
+              <Route index element={<ListPage />} />
+              <Route path=":userId" element={<SinglePage />} />
+              <Route
+                path="new"
+                element={<NewPage title="Add New User" />}
+              />
+            </Route>
+            <Route path="products">
+              <Route index element={<ListPage />} />
+              <Route path=":productId" element={<SinglePage />} />
+              <Route
+                path="new"
+                element={<NewPage title="Add New Product" />}
+              />
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
