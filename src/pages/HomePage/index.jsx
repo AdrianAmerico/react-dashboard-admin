@@ -2,6 +2,8 @@ import React from "react"
 import { SideBar } from "../../components/SideBar"
 import { Navbar } from "../../components/NavBar"
 import { Widget } from "../../components/Widget"
+import { Featured } from "../../components/Featured"
+import { Chart } from "../../components/Chart"
 import "./home.scss"
 
 const HomePage = () => {
@@ -16,7 +18,10 @@ const HomePage = () => {
                     <Widget type="earning" />
                     <Widget type="balance" />
                 </div>
-                Home container
+                <div className="charts">
+                    <Featured />
+                    <Chart />
+                </div>
             </div>
         </div>
     )
