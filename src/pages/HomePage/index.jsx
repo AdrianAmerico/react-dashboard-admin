@@ -5,6 +5,7 @@ import { Widget } from "../../components/Widget"
 import { Featured } from "../../components/Featured"
 import { Chart } from "../../components/Chart"
 import "./home.scss"
+import { TableData } from "../../components/Table"
 
 const HomePage = () => {
     return (
@@ -21,6 +22,12 @@ const HomePage = () => {
                 <div className="charts">
                     <Featured />
                     <Chart />
+                </div>
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Latest Transactions
+                        <TableData />
+                    </div>
                 </div>
             </div>
         </div>
